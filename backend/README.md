@@ -1,36 +1,36 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+Setting up a Python virtual environment (venv) that works well with a team involves creating a shared environment where everyone can install the same dependencies and work in a consistent setup. Here are the steps to create and configure a venv for team collaboration:
 
-## Getting Started
+### 1. **Activate the Virtual Environment**
+Each team member will need to activate the virtual environment on their local machine:
 
-First, run the development server:
+- On **Windows**:
+  ```bash
+  .\env_name\Scripts\activate
+  ```
+- On **Mac/Linux**:
+  ```bash
+  source env_name/bin/activate
+  ```
+
+Once activated, your prompt should change to indicate the venv is active (e.g., `(env_name)` before your prompt).
+
+### 2. **Install Project Dependencies**
+Install the Python packages needed for your project. If your project has a `requirements.txt` file that lists the dependencies, run:
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+pip install -r requirements.txt
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+If you don’t have a `requirements.txt` yet, you can create one by installing the necessary packages and then generating it:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+pip install <package_name>
+pip freeze > requirements.txt
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### 3. **Run the Flask Application**
 
-## Learn More
+```bash
+python app.py
+```
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
