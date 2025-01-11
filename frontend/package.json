@@ -9,6 +9,9 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@liveblocks/client": "^2.15.2",
+    "@liveblocks/node": "^2.15.2",
+    "@liveblocks/react": "^2.15.2",
     "next": "15.1.4",
     "react": "^19.0.0",
     "react-dom": "^19.0.0"
