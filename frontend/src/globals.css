@@ -129,3 +129,22 @@ body {
   }
 }
 
+.floating-cloud {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  animation: float 3s ease-in-out infinite;
+  z-index: 100;
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
