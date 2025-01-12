@@ -2,15 +2,16 @@ import { Product } from '@/types/product'
 
 interface CheckoutSummaryProps {
   products: Product[]
+  className?: string
 }
 
-export function CheckoutSummary({ products }: CheckoutSummaryProps) {
+export function CheckoutSummary({ products, className }: CheckoutSummaryProps) {
   const subtotal = products.reduce((sum, product) => sum + (product.price * product.quantity), 0)
   const tax = subtotal * 0.13 // Assuming 13% tax
   const total = subtotal + tax
 
   return (
-    <div className="space-y-6 p-6 rounded-xl bg-card shadow-sm">
+    <div className={`space-y-6 p-6 rounded-xl bg-card shadow-sm ${className}`}>
       <h2 className="text-2xl font-semibold text-foreground">Order Summary</h2>
       <div className="space-y-3">
         {products.map((product) => (

@@ -1,0 +1,22 @@
+[
+  {
+    "id": "1",
+    "name": "Decorative Lights",
+    "description": "String lights for outdoor event decoration",
+    "brand": "PartyLights.com",
+    "sourceUrl": "https://partylights.com/string-lights",
+    "price": 29.99,
+    "quantity": 5,
+    "imageUrl": "/placeholder.svg?height=200&width=200"
+  },
+  {
+    "id": "2",
+    "name": "Photo Booth Props",
+    "description": "Fun party props for photo sessions",
+    "brand": "EventSupplies.com",
+    "sourceUrl": "https://eventsupplies.com/props",
+    "price": 19.99,
+    "quantity": 1,
+    "imageUrl": "/placeholder.svg?height=200&width=200"
+  }
+] 
