@@ -1,4 +1,5 @@
 from flask import Flask, jsonify, request
+from generate_list import generate_shopping_recommendations
 
 from flask_cors import CORS
 import json
@@ -38,10 +39,7 @@ def upload_pictures():
         # list of base64 picture strings
         pictures = data["pictures"][int(num) :]
 
-        # your code
-        print(pictures)
-
-    return jsonify({"hello": "world"})
+    return jsonify(generate_shopping_recommendations(pictures))
 
 
 if __name__ == "__main__":

@@ -80,15 +80,13 @@ def search_products(item_name, num_results=1):
             type="auto",
             include_text=["$"],
             extras={
-                "image_links": 10,
+                "image_links": 1,
             }
         )
 
         # Process and structure the results
         products = []
         for result in search_results.results:
-            print(result.text)
-            print("\n")
             product = {
                 "name": result.title,
                 "description": result.summary,
@@ -114,15 +112,14 @@ def get_shopping_options(shopping_list):
         # shopping_list = json.loads(shopping_list_json)
         
         # Store results for all items
-        product_options = {}
+        product_list = []
         
         # Iterate through categories and items
         for item in shopping_list:
             # Search for products for each item
-            product_results = search_products(item)
-            product_options[item] = product_results
+            product_list.extend(search_products(item))
         
-        return json.dumps(product_options, indent=2)
+        return json.dumps(product_list, indent=2)
 
     except Exception as e:
         print(f"Error processing shopping list: {str(e)}")
