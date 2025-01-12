@@ -3,7 +3,6 @@ import { Inter } from 'next/font/google';
 import '../globals.css';
 import { Providers } from './Providers';
 import { Suspense } from 'react';
-import { UserProvider } from '@auth0/nextjs-auth0/client';
 
 export const metadata: Metadata = {
     title: 'Liveblocks',
@@ -36,9 +35,7 @@ export default function RootLayout({
                     type="image/png"
                 />
             </head>
-            <body>
-                <UserProvider>{children}</UserProvider>
-            </body>
+            <body>{children}</body>
         </html>
     );
 }

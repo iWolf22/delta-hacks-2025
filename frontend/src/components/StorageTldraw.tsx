@@ -24,7 +24,7 @@ import { useState } from 'react';
  * Learn more: https://tldraw.dev/community/license
  */
 
-export function StorageTldraw() {
+export function StorageTldraw({ sendPictures }: any) {
     // Getting authenticated user info. Doing this using selectors instead
     // of just `useSelf()` to prevent re-renders on Presence changes
     const id = useSelf((me) => me.id);
@@ -72,7 +72,10 @@ export function StorageTldraw() {
                 }}
                 autoFocus
             >
-                <TldrawChild temp={temp}></TldrawChild>
+                <TldrawChild
+                    temp={temp}
+                    sendPictures={sendPictures}
+                ></TldrawChild>
             </Tldraw>
         </div>
     );

@@ -10,8 +10,8 @@ CORS(
     app,
     resources={
         r"/*": {
-            "origins": "http://localhost:3000",
-            "methods": ["GET", "POST", "OPTIONS"],
+            "origins": "*",
+            "methods": ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
             "allow_headers": ["Content-Type"],
         }
     },
@@ -22,6 +22,7 @@ CORS(
 def get_products():
     with open("products.json", "r") as f:
         products = json.load(f)
+
     return jsonify(products)
 
 
@@ -39,7 +40,13 @@ def upload_pictures():
         # list of base64 picture strings
         pictures = data["pictures"][int(num) :]
 
-    return jsonify(generate_shopping_recommendations(pictures))
+    print(pictures)
+
+    temp = generate_shopping_recommendations(pictures)
+
+    print(temp)
+
+    return jsonify(temp)
 
 
 if __name__ == "__main__":

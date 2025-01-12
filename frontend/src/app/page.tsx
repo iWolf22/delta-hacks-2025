@@ -2,12 +2,35 @@
 
 import { Room } from '@/app/Room';
 import { StorageTldraw } from '@/components/StorageTldraw';
-import { Suspense, useState } from 'react';
+import { Suspense, useState, useTransition } from 'react';
 import { Providers } from './Providers';
+import { Container } from '@/components/ui/container';
+import { ProductCard } from '@/components/product-card';
+import { CheckoutSummary } from '@/components/checkout-summary';
+import { Button } from '@/components/ui/button';
+import { Product } from '@/types/product';
 
 export default function Home() {
     const [i, setI] = useState('');
     const [c, setC] = useState(false);
+
+    const [d, setD] = useState<any[]>([]);
+
+    async function sendPictures(base64img: string[]) {
+        const res = await fetch('http://localhost:5000/upload-pictures', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ pictures: base64img }),
+        });
+
+        const body = await res.json();
+
+        console.log(body);
+
+        setD(JSON.parse(body));
+    }
 
     return (
         <div
@@ -22,7 +45,7 @@ export default function Home() {
                         Welcome to Our Magical Space
                     </h1>
 
-                    <form className="space-y-4 z-10">
+                    <div className="space-y-4 z-10">
                         <div className="space-y-2">
                             <label
                                 htmlFor="name"
@@ -47,16 +70,48 @@ export default function Home() {
                         >
                             Begin the Journey ✨
                         </button>
-                    </form>
+                    </div>
                 </div>
             ) : (
-                <Suspense>
-                    <Providers name={i}>
-                        <Room>
-                            <StorageTldraw />
-                        </Room>
-                    </Providers>
-                </Suspense>
+                <div>
+                    {d.length == 0 ? (
+                        <Suspense>
+                            <Providers name={i}>
+                                <Room>
+                                    <StorageTldraw
+                                        sendPictures={sendPictures}
+                                    />
+                                </Room>
+                            </Providers>
+                        </Suspense>
+                    ) : (
+                        <Container>
+                            <h1 className="text-4xl font-bold mb-6 text-[#6b3859]">
+                                Event Items Checkout
+                            </h1>
+                            <div className="grid lg:grid-cols-3 gap-6">
+                                <div className="lg:col-span-2 space-y-4">
+                                    {d.map((product: any, i) => (
+                                        <ProductCard
+                                            key={i}
+                                            product={product}
+                                            className="bg-white/40 backdrop-blur-sm shadow-md hover:shadow-lg transition-shadow duration-200"
+                                        />
+                                    ))}
+                                </div>
+                                <div className="space-y-4">
+                                    <CheckoutSummary
+                                        products={d}
+                                        className="bg-white/40 backdrop-blur-sm shadow-md hover:shadow-lg transition-shadow duration-200"
+                                    />
+                                    <Button className="w-full text-lg bg-[#834970] hover:bg-[#6b3859] text-white shadow-md hover:shadow-lg transition-all duration-200">
+                                        Proceed to Checkout
+                                    </Button>
+                                </div>
+                            </div>
+                        </Container>
+                    )}
+                </div>
             )}
         </div>
     );
