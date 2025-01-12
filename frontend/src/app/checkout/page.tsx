@@ -5,23 +5,37 @@ import { ProductCard } from "@/components/product-card"
 import { CheckoutSummary } from "@/components/checkout-summary"
 import { Button } from "@/components/ui/button"
 import { Product } from "@/types/product"
+import { Loading } from "@/components/ui/loading"
 
 export default function CheckoutPage() {
   const [products, setProducts] = useState<Product[]>([])
+  const [isLoading, setIsLoading] = useState(true)
 
   useEffect(() => {
     const fetchProducts = async () => {
       try {
+        await new Promise(resolve => setTimeout(resolve, 1000))
         const response = await fetch('http://localhost:5000/products')
         const data = await response.json()
+        console.log('Fetched products:', data)
         setProducts(data)
+        setIsLoading(false)
       } catch (error) {
         console.error('Error:', error)
+        setIsLoading(false)
       }
     }
 
     fetchProducts()
   }, [])
+
+  console.log('Current products state:', products)
+
+  if (isLoading) return <Loading />
+
+  if (products.length === 0) {
+    return <div>No products found</div>
+  }
 
   return (
     <Container>

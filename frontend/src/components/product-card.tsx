@@ -18,7 +18,10 @@ export function ProductCard({ product, className }: ProductCardProps) {
           className="rounded-md object-cover"
         />
         <div className="flex-1">
-          <h3 className="text-xl font-semibold text-[#6b3859] mb-2">{product.name}</h3>
+          <div className="flex justify-between items-center mb-2">
+            <h3 className="text-xl font-semibold text-[#6b3859]">{product.name}</h3>
+            <p className="text-sm text-[#9a6084]">{product.brand}</p>
+          </div>
           <p className="text-[#7c4368] mb-4">{product.description}</p>
           <div className="flex justify-between items-center">
             <span className="text-lg font-medium text-[#6b3859]">${product.price}</span>
