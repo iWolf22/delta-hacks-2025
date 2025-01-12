@@ -37,11 +37,7 @@ export default function RootLayout({
                 />
             </head>
             <body>
-                <UserProvider>
-                    <Suspense>
-                        <Providers>{children}</Providers>
-                    </Suspense>
-                </UserProvider>
+                <UserProvider>{children}</UserProvider>
             </body>
         </html>
     );
