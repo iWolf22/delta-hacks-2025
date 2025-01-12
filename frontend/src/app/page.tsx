@@ -10,7 +10,12 @@ export default function Home() {
     const [c, setC] = useState(false);
 
     return (
-        <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-pink-100 via-purple-100 to-blue-100">
+        <div
+            className="min-h-screen flex items-center justify-center bg-gradient-to-br from-pink-100 via-purple-100 to-blue-100 
+    [background-image:radial-gradient(#4b5563_1px,transparent_1px)] 
+    [background-size:16px_16px] 
+    [background-position:center]"
+        >
             {!c ? (
                 <div className="p-8 bg-white/70 backdrop-blur-sm rounded-2xl shadow-lg max-w-md w-full">
                     <h1 className="text-3xl font-bold text-center mb-6 bg-gradient-to-r from-pink-400 to-purple-500 text-transparent bg-clip-text">
@@ -43,20 +48,6 @@ export default function Home() {
                             Begin the Journey ✨
                         </button>
                     </form>
-                    <div className="relative">
-                        <img
-                            src="https://hackthenorth.com/static/media/cloud-right.a851544f1a18cf70a6ef.png"
-                            alt="Floating cloud"
-                            className="floating-cloud w-96 absolute top-32 ml-[-200px] z-0 scale-x-[-1]"
-                        />
-                    </div>
-                    <div className="relative">
-                        <img
-                            src="https://hackthenorth.com/static/media/cloud-right.a851544f1a18cf70a6ef.png"
-                            alt="Floating cloud"
-                            className="w-96 absolute bottom-32 ml-[200px] z-0"
-                        />
-                    </div>
                 </div>
             ) : (
                 <Suspense>
