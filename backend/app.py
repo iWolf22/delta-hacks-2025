@@ -34,17 +34,21 @@ def upload_pictures():
     with open("lines.txt", "r") as file:
         num = file.read()
 
+        print("num in file", num)
+
         with open("lines.txt", "w") as file:
             file.write(str(len(data["pictures"])))
 
         # list of base64 picture strings
-        pictures = data["pictures"][int(num) :]
 
-    print(pictures)
+        print("list of pictures old length", len(data["pictures"]))
+        pictures = data["pictures"][int(num) - 1 :]
+
+    print("list of pictures new length", len(pictures))
 
     temp = generate_shopping_recommendations(pictures)
 
-    print(temp)
+    print("shopping list", len(temp))
 
     return jsonify(temp)
 

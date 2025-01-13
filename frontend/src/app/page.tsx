@@ -18,7 +18,7 @@ export default function Home() {
 
     const [isPending, startTransition] = useTransition();
 
-    const [d, setD] = useState<any[]>([]);
+    const [d, setD] = useState<any>([]);
 
     async function sendPictures(base64img: string[]) {
         startTransition(async () => {
@@ -55,7 +55,7 @@ export default function Home() {
                                 }}
                                 className="w-full p-6 bg-gradient-to-r from-pink-400 to-purple-500 text-white rounded-lg hover:opacity-90 transition-opacity font-medium shadow-md hover:shadow-lg text-4xl"
                             >
-                                Purchase Successful ✅
+                                Purchase Successful
                             </button>
                         </div>
                     </div>
@@ -125,19 +125,22 @@ export default function Home() {
                                         </h1>
                                         <div className="grid lg:grid-cols-3 gap-6">
                                             <div className="lg:col-span-2 space-y-4">
-                                                {d.map((product: any, i) => (
-                                                    <ProductCard
-                                                        key={i}
-                                                        product={product}
-                                                        className="bg-white/40 backdrop-blur-sm shadow-md hover:shadow-lg transition-shadow duration-200"
-                                                    />
-                                                ))}
+                                                {d &&
+                                                    d.map((product: any, i) => (
+                                                        <ProductCard
+                                                            key={i}
+                                                            product={product}
+                                                            className="bg-white/40 backdrop-blur-sm shadow-md hover:shadow-lg transition-shadow duration-200"
+                                                        />
+                                                    ))}
                                             </div>
                                             <div className="space-y-4">
-                                                <CheckoutSummary
-                                                    products={d}
-                                                    className="bg-white/40 backdrop-blur-sm shadow-md hover:shadow-lg transition-shadow duration-200"
-                                                />
+                                                {d && (
+                                                    <CheckoutSummary
+                                                        products={d}
+                                                        className="bg-white/40 backdrop-blur-sm shadow-md hover:shadow-lg transition-shadow duration-200"
+                                                    />
+                                                )}
                                                 <Button
                                                     onClick={() => setE(true)}
                                                     className="w-full text-lg bg-[#834970] hover:bg-[#6b3859] text-white shadow-md hover:shadow-lg transition-all duration-200"

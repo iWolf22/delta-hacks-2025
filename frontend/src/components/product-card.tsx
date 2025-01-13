@@ -35,7 +35,7 @@ export function ProductCard({ product, className }: any) {
                             {product.name}
                         </h3>
                         <p className="text-sm text-[#9a6084]">
-                            <Link href={product.sourceUrl}>
+                            <Link href={product.sourceUrl} target="_blank">
                                 {product.brand}
                             </Link>
                         </p>
