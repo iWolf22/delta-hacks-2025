@@ -1,4 +1,4 @@
-# Delta-hacks-2025
+# Party Palette (delta-hacks-2025)
 
 ## 🚀 Inspiration
 In today’s fast-paced world, finding a sense of community often begins in third spaces—and what better way to foster those connections than by hosting events? The challenge, though, lies in the how. Planning an event can turn into a logistical nightmare—rabbit holes of online searches, endless iterations of shopping lists, and exhausting errands.
